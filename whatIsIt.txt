@@ -1,0 +1,10 @@
+** FINAL APP = FACIAL 
+
+- react
+- image recognition API 
+- own server: node & express
+- database 
+
+- sign in
+- fully responsive 
+- facial image detection 
