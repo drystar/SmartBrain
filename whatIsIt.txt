@@ -8,3 +8,15 @@
 - sign in
 - fully responsive 
 - facial image detection 
+
+** wireframe **
+
+see Andrei intro video 
+
+- logo
+- sign in & sign out feature 
+- user info 
+- responsive 
+- url image input | detect | facial 
+
+
