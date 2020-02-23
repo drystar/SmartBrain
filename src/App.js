@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import Particles from "react-particles-js";
+import Clarifai from "clarifai";
 
 import Navigation from "./Components/Navigation/Navigation";
 import Logo from "./Components/Logo/Logo";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
 import Rank from "./Components/Rank/Rank";
 import "./App.css";
+
+const app = new Clarifai.App({
+  apiKey: "0c56b22fab71436b9714af496220e24a"
+});
 
 const particlesOptions = {
   particles: {
@@ -40,6 +45,7 @@ class App extends Component {
       )
       .then(
         function(response) {
+          console.log(response);
           // do something with response
         },
         function(err) {
