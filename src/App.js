@@ -6,6 +6,8 @@ import Navigation from "./Components/Navigation/Navigation";
 import Logo from "./Components/Logo/Logo";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
 import Rank from "./Components/Rank/Rank";
+import FaceRecognition from "./Components/FaceRecognition/FaceRecognition";
+
 import "./App.css";
 
 const app = new Clarifai.App({
@@ -65,7 +67,7 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        {/* <FaceRecognition />} */}
+        <FaceRecognition />}
       </div>
     );
   }
