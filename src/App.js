@@ -40,7 +40,7 @@ class App extends Component {
   };
 
   onButtonSubmit = () => {
-    this.setState({ imageUrl: input });
+    this.setState({ imageUrl: this.state.input });
     console.log("click");
     app.models
       .predict(
