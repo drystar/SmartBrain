@@ -31,9 +31,12 @@ class App extends Component {
     super();
     this.state = {
       input: "",
-      imageUrl: ""
+      imageUrl: "",
+      box: {}
     };
   }
+
+  calculateFacelocation = data => {};
 
   onInputChange = event => {
     this.setState({ input: event.target.value });
@@ -41,18 +44,11 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    console.log("click");
-    app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input).then(
-      function(response) {
-        console.log(
-          response.outputs[0].data.regions[0].region_info.bounding_box
-        );
-        // do something with response
-      },
-      function(err) {
-        // there was an error
-      }
-    );
+    app.models
+      .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+      .then(response =>
+        this.calculateFacelocation(response).catch(err => console.log(err))
+      );
   };
 
   // COLOR_MODEL: 'eeed0b6733a644cea07cf4c60f87ebb7',
