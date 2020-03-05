@@ -2,6 +2,36 @@ const express = require("express");
 
 const app = express();
 
+// hard codeed database | will be dynamic later
+const database = {
+  user: [
+    {
+      id: "123",
+      name: "John",
+      email: "johnboy@gmail.com",
+      password: cookies,
+      entries: 0,
+      joined: new Date()
+    },
+    {
+      id: "124",
+      name: "Taylor",
+      email: "t.aylor@gmail.com",
+      password: bananas,
+      entries: 0,
+      joined: new Date()
+    },
+    {
+      id: "125",
+      name: "Emily",
+      email: "gurlboss@outlook.ca",
+      password: unicorns,
+      entries: 0,
+      joined: new Date()
+    }
+  ]
+};
+
 app.get("/", (req, res) => {
   res.send("This is Working");
 });
