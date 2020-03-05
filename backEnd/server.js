@@ -13,7 +13,6 @@ const database = {
       id: "123",
       name: "John",
       email: "johnboy@gmail.com",
-      password: "cookies",
       entries: 0,
       joined: new Date()
     },
@@ -21,7 +20,6 @@ const database = {
       id: "124",
       name: "Taylor",
       email: "t.aylor@gmail.com",
-      password: "bananas",
       entries: 0,
       joined: new Date()
     },
@@ -29,9 +27,15 @@ const database = {
       id: "125",
       name: "Emily",
       email: "gurlboss@outlook.ca",
-      password: "unicorns",
       entries: 0,
       joined: new Date()
+    }
+  ],
+  login: [
+    {
+      id: "987",
+      hash: "",
+      email: "johnboy@gmail.com"
     }
   ]
 };
