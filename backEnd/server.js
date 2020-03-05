@@ -67,10 +67,11 @@ app.post("/register", (req, res) => {
   res.json(database.users[database.users.length - 1]);
 });
 
+// user id/ profile request route
 app.get("/profile/:id", (req, res) => {
-  const { id } = req.params;
-  database.users.forEach(users => {
-    let found = false;
+  const { id } = req.body;
+  let found = false;
+  database.users.forEach(user => {
     if (user.id === id) {
       found = true;
       return res.json(user);
@@ -81,15 +82,22 @@ app.get("/profile/:id", (req, res) => {
   }
 });
 
+// user image route
+app.put("/image", (req, res) => {
+  const { id } = req.body;
+  let found = false;
+  database.users.forEach(user => {
+    if (user.id === id) {
+      found = true;
+      user.entries++;
+      return res.json(user).entires;
+    }
+  });
+  if (!found) {
+    res.status(404).json("Sorry Not Found ");
+  }
+});
+
 app.listen(3000, () => {
   console.log("App is Running on Port 3000 - Looking Good!");
 });
-
-/*
-/ -- res = this is working
-/ signin --> POST success/ fail
-/ register --> POST = user
-/ profile/:userId --> GET = user
-/ image --> PUT --> user
-
-*/
