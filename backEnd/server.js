@@ -37,7 +37,8 @@ const database = {
 };
 
 app.get("/", (req, res) => {
-  res.send("This is Working");
+  // res.send("This is Working");
+  res.send(database.users);
 });
 
 // signin route
