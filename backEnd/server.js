@@ -67,6 +67,20 @@ app.post("/register", (req, res) => {
   res.json(database.users[database.users.length - 1]);
 });
 
+app.get("/profile/:id", (req, res) => {
+  const { id } = req.params;
+  database.users.forEach(users => {
+    let found = false;
+    if (user.id === id) {
+      found = true;
+      return res.json(user);
+    }
+  });
+  if (!found) {
+    res.status(404).json("Invalid User Id ");
+  }
+});
+
 app.listen(3000, () => {
   console.log("App is Running on Port 3000 - Looking Good!");
 });
