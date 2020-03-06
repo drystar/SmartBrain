@@ -15,6 +15,7 @@ const database = {
     {
       id: "123",
       name: "John",
+      password: "cookies",
       email: "johnboy@gmail.com",
       entries: 0,
       joined: new Date()
@@ -22,6 +23,7 @@ const database = {
     {
       id: "124",
       name: "Taylor",
+      password: "apples",
       email: "t.aylor@gmail.com",
       entries: 0,
       joined: new Date()
@@ -29,6 +31,7 @@ const database = {
     {
       id: "125",
       name: "Emily",
+      password: "unicorns",
       email: "gurlboss@outlook.ca",
       entries: 0,
       joined: new Date()
