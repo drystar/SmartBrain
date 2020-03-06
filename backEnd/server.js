@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
+const cors = require("cors");
 
 const app = express();
 
 app.use(bodyParser.json());
 // app.use(express.json());
+app.use(cors());
 
 // hard codeed database | will be dynamic later
 const database = {
