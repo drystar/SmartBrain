@@ -53,20 +53,20 @@ app.get("/", (req, res) => {
 
 // signin route
 app.post("/signin", (req, res) => {
-  bcrypt.compare(
-    "cheese",
-    $2a$10$RCTTayyBKXz0TiO2BCG / VuFNbhCex7wbTHuO52WbOXsVDoWjDwxky,
-    function(err, res) {
-      console.log("first guess", res);
-    }
-  );
-  bcrypt.compare(
-    "veggies",
-    $2a$10$RCTTayyBKXz0TiO2BCG / VuFNbhCex7wbTHuO52WbOXsVDoWjDwxky,
-    function(err, res) {
-      console.log("secxond guess", res);
-    }
-  );
+  // bcrypt.compare(
+  //   "cheese",
+  //   $2a$10$RCTTayyBKXz0TiO2BCG / VuFNbhCex7wbTHuO52WbOXsVDoWjDwxky,
+  //   function(err, res) {
+  //     console.log("first guess", res);
+  //   }
+  // );
+  // bcrypt.compare(
+  //   "veggies",
+  //   $2a$10$RCTTayyBKXz0TiO2BCG / VuFNbhCex7wbTHuO52WbOXsVDoWjDwxky,
+  //   function(err, res) {
+  //     console.log("secxond guess", res);
+  //   }
+  // );
   if (
     req.body.email === database.users[0].email &&
     req.body.password === database.users[0].password
@@ -96,7 +96,7 @@ app.post("/register", (req, res) => {
 
 // user id/ profile request route
 app.get("/profile/:id", (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   let found = false;
   database.users.forEach(user => {
     if (user.id === id) {
