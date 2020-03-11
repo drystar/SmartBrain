@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -8,6 +8,7 @@ class Signin extends React.Component {
       signInPassword: ""
     };
   }
+
   onEmailChange = event => {
     this.setState({ signInEmail: event.target.value });
   };
@@ -19,20 +20,21 @@ class Signin extends React.Component {
   onSubmitSignIn = () => {
     fetch("http://localhost:3000/signin", {
       method: "post",
-      headers: { "Content-Type:": "applciation/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.signInEmail,
         password: this.state.signInPassword
       })
     })
       .then(response => response.json())
-      .then(data => {
+      .then(user => {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
       });
   };
+
   render() {
     const { onRouteChange } = this.props;
     return (
@@ -76,8 +78,8 @@ class Signin extends React.Component {
             </div>
             <div className="lh-copy mt3">
               <p
-                onClick={() => onRouteChange("Register")}
-                className="f6 link dim black db"
+                onClick={() => onRouteChange("register")}
+                className="f6 link dim black db pointer"
               >
                 Register
               </p>
