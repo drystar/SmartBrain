@@ -20,43 +20,6 @@ app.use(cors());
 // app.use(bodyParser.json());
 app.use(express.json());
 
-// hard codeed database | will be dynamic later
-const database = {
-  users: [
-    {
-      id: "123",
-      name: "John",
-      password: "cookies",
-      email: "johnboy@gmail.com",
-      entries: 0,
-      joined: new Date()
-    },
-    {
-      id: "124",
-      name: "Taylor",
-      password: "apples",
-      email: "t.aylor@gmail.com",
-      entries: 0,
-      joined: new Date()
-    },
-    {
-      id: "125",
-      name: "Emily",
-      password: "unicorns",
-      email: "gurlboss@outlook.ca",
-      entries: 0,
-      joined: new Date()
-    }
-  ],
-  login: [
-    {
-      id: "987",
-      hash: "",
-      email: "johnboy@gmail.com"
-    }
-  ]
-};
-
 app.get("/", (req, res) => {
   // res.send("This is Working");
   res.send(database.users);
