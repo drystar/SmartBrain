@@ -123,17 +123,14 @@ app.get("/profile/:id", (req, res) => {
 // user image route
 app.put("/image", (req, res) => {
   const { id } = req.body;
-  let found = false;
-  database.users.forEach(user => {
-    if (user.id === id) {
-      found = true;
-      user.entries++;
-      return res.json(user).entires;
-    }
-  });
-  if (!found) {
-    res.status(404).json("Sorry Not Found ");
-  }
+  db("users")
+    .where("id", "=", id)
+    .increment("entries", 1)
+    .returning("entries")
+    .then(entries => {
+      res.json(entires[0]);
+    })
+    .catch(err => res.status(400).json("Unable to Fetch Entires"));
 });
 
 app.listen(3000, () => {
