@@ -14,8 +14,16 @@ const postgres = knex({
   }
 });
 
-// check with test query
-console.log(postgres.select("*").from("users"));
+// // check with test query
+// console.log(postgres.select("*").from("users"));
+
+// check with test query to access users data
+postgres
+  .select("*")
+  .from("users")
+  .then(data => {
+    console.log(data);
+  });
 
 const app = express();
 
