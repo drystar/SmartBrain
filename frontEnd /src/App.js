@@ -12,6 +12,21 @@ import FaceRecognition from "./Components/FaceRecognition/FaceRecognition";
 
 import "./App.css";
 
+const initialstate = {
+  input: "",
+  imageUrl: "",
+  box: {},
+  route: "Signin",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: ""
+  }
+};
+
 const app = new Clarifai.App({
   apiKey: "0c56b22fab71436b9714af496220e24a"
 });
@@ -31,20 +46,7 @@ const particlesOptions = {
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: "",
-      imageUrl: "",
-      box: {},
-      route: "Signin",
-      isSignedIn: false,
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        entries: 0,
-        joined: ""
-      }
-    };
+    this.state = initialstate;
   }
 
   loadUser = data => {
