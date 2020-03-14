@@ -90,14 +90,16 @@ app.post("/register", (req, res) => {
         return trx("users")
           .returning("*")
           .insert({
-            email: loginEmail,
+            email: loginEmail[0],
             name: name,
             joined: new Date()
           })
           .then(user => {
             res.json(user[0]);
           });
-      });
+      })
+      .then(trx.comit)
+      .catch(trx.rollback);
   }).catch(err => res.status(400).json("Unable to Join"));
 });
 
