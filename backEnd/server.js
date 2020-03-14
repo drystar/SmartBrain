@@ -64,20 +64,6 @@ app.get("/", (req, res) => {
 
 // signin route
 app.post("/signin", (req, res) => {
-  // bcrypt.compare(
-  //   "cheese",
-  //   $2a$10$RCTTayyBKXz0TiO2BCG / VuFNbhCex7wbTHuO52WbOXsVDoWjDwxky,
-  //   function(err, res) {
-  //     console.log("first guess", res);
-  //   }
-  // );
-  // bcrypt.compare(
-  //   "veggies",
-  //   $2a$10$RCTTayyBKXz0TiO2BCG / VuFNbhCex7wbTHuO52WbOXsVDoWjDwxky,
-  //   function(err, res) {
-  //     console.log("secxond guess", res);
-  //   }
-  // );
   if (
     req.body.email === database.users[0].email &&
     req.body.password === database.users[0].password
@@ -91,17 +77,28 @@ app.post("/signin", (req, res) => {
 // register route
 app.post("/register", (req, res) => {
   const { email, name, password } = req.body;
-  db("users")
-    .returning("*")
-    .insert({
-      email: email,
-      name: name,
-      joined: new Date()
-    })
-    .then(user => {
-      res.json(user[0]);
-    })
-    .catch(err => res.status(400).json("Unable to Join"));
+  const hash = bcrypt.hashSync(password);
+  db.transaction(trx => {
+    trx
+      .insert({
+        hash: hash,
+        email: email
+      })
+      .into("login")
+      .returning("email")
+      .then(loginEmail => {
+        return trx("users")
+          .returning("*")
+          .insert({
+            email: loginEmail,
+            name: name,
+            joined: new Date()
+          })
+          .then(user => {
+            res.json(user[0]);
+          });
+      });
+  }).catch(err => res.status(400).json("Unable to Join"));
 });
 
 // user id/ profile request route
