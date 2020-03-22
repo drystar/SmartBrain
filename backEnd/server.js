@@ -49,7 +49,9 @@ app.post("/signin", (req, res) => {
 });
 
 // register route
-app.post("/register", register.handleRegister);
+app.post("/register", (req, res) => {
+  register.handleRegister(req, res, db, bcrypt);
+});
 
 // user id/ profile request route
 app.get("/profile/:id", (req, res) => {
