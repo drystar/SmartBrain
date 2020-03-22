@@ -31,16 +31,16 @@ app.get("/", (req, res) => {
 });
 
 // signin route
-app.post("/signin", signin.handleSignin(req, res, db, bcrypt));
+app.post("/signin", signin.handleSignin(db, bcrypt));
 
 // register route
-app.post("/register", register.handleRegister(req, res, db, bcrypt));
+app.post("/register", register.handleRegister(db, bcrypt));
 
 // user id/ profile request route
-app.get("/profile/:id", profile.handleProfileGet(req, res, db));
+app.get("/profile/:id", profile.handleProfileGet(db));
 
 // user image route
-app.put("/image", image.handleImage(req, res, db));
+app.put("/image", image.handleImage(db));
 
 app.listen(3000, () => {
   console.log("App is Running on Port 3000 - Looking Good!");
