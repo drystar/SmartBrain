@@ -42,6 +42,9 @@ app.get("/profile/:id", profile.handleProfileGet(db));
 // user image route
 app.put("/image", image.handleImage(db));
 
+// user image route Url
+app.post("/imageurl", image.handleApiCall);
+
 app.listen(3000, () => {
   console.log("App is Running on Port 3000 - Looking Good!");
 });
