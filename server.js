@@ -26,8 +26,8 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  // res.send("This is Working");
-  res.send(database.users);
+  res.send("This is Working");
+  // res.send(database.users);
 });
 
 // signin route
