@@ -1,13 +1,14 @@
 {
   "name": "backEnd",
   "version": "1.0.0",
-  "description": "",
+  "description": "Back End Server for SmartBrain App",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd frontEnd && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "chrisd",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
